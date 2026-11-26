@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neon Prism Breaker — Engenharia de Software</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="app-shell">
+    <header id="top-hud">
+      <div class="hud-card"><span class="label">PONTUAÇÃO</span><span id="hud-score" class="value">000000</span></div>
+      <div class="hud-card"><span class="label">RECORDE</span><span id="hud-highscore" class="value">000000</span></div>
+      <div class="hud-card"><span class="label">NÍVEL</span><span id="hud-level" class="value">01</span></div>
+      <div class="hud-card"><span class="label">COMBO</span><span id="hud-combo" class="value">x1.0</span></div>
+      <div class="hud-card"><span class="label">VIDAS</span><span id="hud-lives" class="value">♥♥♥</span></div>
+      <button id="btn-audio" class="icon-btn" title="Alternar Som (M)">🔊</button>
+      <button id="btn-pause" class="icon-btn" title="Pausa (P)">⏸</button>
+    </header>
+
+    <main id="stage-wrapper">
+      <canvas id="game-canvas" width="900" height="620"></canvas>
+
+      <!-- Menu Principal -->
+      <section id="overlay-menu" class="overlay active">
+        <div class="panel">
+          <p class="eyebrow">ISMT • ENGENHARIA DE SOFTWARE 2026-27</p>
+          <h1>NEON PRISM BREAKER</h1>
+          <p class="subtitle">JavaScript nativo • Física Sub-Step • Áudio Sintetizado Web Audio API</p>
+          <div class="difficulty-row">
+            <label for="select-difficulty">Dificuldade:</label>
+            <select id="select-difficulty">
+              <option value="casual">Casual (Velocidade 0.85x)</option>
+              <option value="normal" selected>Normal (Velocidade 1.0x)</option>
+              <option value="veteran">Veterano (Velocidade 1.25x)</option>
+            </select>
+          </div>
+          <div class="btn-group">
+            <button id="btn-start" class="primary-btn">INICIAR JOGO</button>
+            <button id="btn-controls" class="secondary-btn">CONTROLOS & POWER-UPS</button>
+          </div>
+          <div id="highscores-preview" class="leaderboard-box"></div>
+        </div>
+      </section>
+
+      <!-- Ajuda / Controlos -->
+      <section id="overlay-help" class="overlay">
+        <div class="panel">
+          <h2>Controlos & Mecânicas</h2>
+          <ul class="help-list">
+            <li><strong>Rato / Toque ou ← → / A D:</strong> Mover a plataforma</li>
+            <li><strong>Espaço / Clique:</strong> Lançar esfera ou disparar Laser</li>
+            <li><strong>P / Esc:</strong> Pausar / Retomar partida</li>
+            <li><strong>M:</strong> Silenciar / Ativar sintetizador de som</li>
+          </ul>
+          <div class="powerup-legend">
+            <span class="badge expand">EXP: Raquete Larga</span>
+            <span class="badge multi">MUL: Multi-Bola x3</span>
+            <span class="badge laser">LSR: Canhões Laser</span>
+            <span class="badge shield">SHD: Barreira Inferior</span>
+            <span class="badge slow">SLW: Câmara Lenta</span>
+          </div>
+          <button id="btn-close-help" class="primary-btn">VOLTAR</button>
+        </div>
+      </section>
+
+      <!-- Pausa -->
+      <section id="overlay-pause" class="overlay">
+        <div class="panel">
+          <h2>JOGO EM PAUSA</h2>
+          <p>Estado da simulação preservado.</p>
+          <div class="btn-group">
+            <button id="btn-resume" class="primary-btn">RETOMAR</button>
+            <button id="btn-restart" class="secondary-btn">REINICIAR</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Fim de Jogo / Vitória -->
+      <section id="overlay-gameover" class="overlay">
+        <div class="panel">
+          <h2 id="gameover-title">FIM DE JOGO</h2>
+          <p id="gameover-summary" class="subtitle"></p>
+          <div id="gameover-stats" class="stats-grid"></div>
+          <div class="btn-group">
+            <button id="btn-play-again" class="primary-btn">JOGAR NOVAMENTE</button>
+            <button id="btn-to-menu" class="secondary-btn">MENU PRINCIPAL</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
